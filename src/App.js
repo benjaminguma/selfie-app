@@ -4,7 +4,7 @@ import axios from "axios";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { Effect } from "@cloudinary/url-gen/actions/effect";
 
-let cloudName = "< INSERT-CLOUDNAME-HERE >";
+let cloudName = < INSERT-CLOUDNAME-HERE >;
 const cld = new Cloudinary({
     cloud: {
         cloudName,
