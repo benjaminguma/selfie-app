@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins";
+}
+
+button {
+    cursor: pointer;
+}
+
+.main {
+    width: 87%;
+    margin: auto;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 1rem;
+    align-items: start;
+    min-height: 400px;
+}
+
+.media_box {
+    position: relative;
+}
+
+.capture_btn {
+    border: 3px solid #fff;
+    width: 4.5rem;
+    height: 4.5rem;
+    background-color: hsl(0, 100%, 60%);
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    transition: 0.2s linear;
+    z-index: 2;
+}
+.capture_btn:hover {
+    transform: translateX(-50%) scale(1.1);
+    background-color: red;
+}
+.capture_btn:disabled {
+    background-color: #f2f2f2;
+}
+
+.img_box {
+    position: absolute;
+    inset: 0 0 0 0;
+    z-index: 3;
+}
+
+.img_box img {
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+    display: inline-block;
+}
+
+.close_btn {
+    position: absolute;
+    top: 106%;
+    left: 50%;
+    transform: translateY(-50%);
+    padding: 0.6em 1.6em;
+    font-size: 1.3rem;
+    font-family: inherit;
+    border: none;
+    background-color: hsl(0, 100%, 67%);
+    color: white;
+    border-radius: 5px;
+}
+
+/* FILTER */
+
+.filter_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    padding: 1.5rem;
+    padding-top: 0;
+}
+
+.filter_item {
+    border-radius: 5px;
+    display: grid;
+    overflow: hidden;
+    border: 1px solid hsl(0, 0%, 78%);
+    cursor: pointer;
+}
+
+.filter_item:hover .filter_des {
+    background-color: #000;
+}
+
+.filter_item img {
+    width: 100%;
+    object-fit: cover;
+}
+.filter_des {
+    display: block;
+    background-color: hsl(0, 0%, 20%);
+    color: #f2f2f2;
+    font-weight: 600;
+    padding: 10px;
+    text-transform: capitalize;
+}
