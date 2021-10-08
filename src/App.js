@@ -1,10 +1,11 @@
+import "./App.css";
 import { useRef, useState } from "react";
 import Webcam from "react-webcam";
 import axios from "axios";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { Effect } from "@cloudinary/url-gen/actions/effect";
 
-let cloudName = "< INSERT-CLOUDNAME-HERE >";
+let cloudName = "dqydioa16";
 const cld = new Cloudinary({
     cloud: {
         cloudName,
@@ -58,7 +59,7 @@ function ImagePreviewer({ url, deleteImage }) {
     ) : null;
 }
 
-function FilterBox({ imgId, setPrevURL, filterName }) {
+function FilterItem({ imgId, setPrevURL, filterName }) {
     let image = cld.image(imgId);
     image = applyFilter(filterName, image);
     const imgURL = image.toURL();
@@ -81,7 +82,7 @@ const App = () => {
     const [loading, setLoading] = useState(false);
     const [id, setId] = useState("");
     const [prevURL, setPrevURL] = useState("");
-    const capture = async () => {
+    const captureAndUpload = async () => {
         // get screenshot
         const data = camRef.current.getScreenshot();
 
@@ -99,8 +100,6 @@ const App = () => {
             const imageDetails = res.data;
             setId(imageDetails.public_id);
             setPrevURL(imageDetails.url);
-            // console.log({ imageDetails });
-            // const img = cld.image(imageDetails.public_id);
         } catch (error) {
             console.log(error);
         } finally {
@@ -118,25 +117,20 @@ const App = () => {
     return (
         <section className="main">
             <article className="media_box">
-                <div className="camera">
-                    {/* web cam */}
+                <Webcam ref={camRef} videoConstraints={constraints} screenshotFormat="image/jpeg" />
 
-                    <Webcam
-                        ref={camRef}
-                        v
-                        ideoConstraints={constraints}
-                        screenshotFormat="image/jpeg"
-                    />
-
-                    <button disabled={loading} onClick={capture} className="capture_btn"></button>
-                </div>
+                <button
+                    disabled={loading}
+                    onClick={captureAndUpload}
+                    className="capture_btn"
+                ></button>
                 <ImagePreviewer url={prevURL} deleteImage={deleteImage} />
             </article>
             <article className="filter_container">
                 {id && (
                     <>
                         {filters.map((filter, index) => (
-                            <FilterBox
+                            <FilterItem
                                 imgId={id}
                                 filterName={filter}
                                 setPrevURL={setPrevURL}
