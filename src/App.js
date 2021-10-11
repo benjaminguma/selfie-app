@@ -1,11 +1,11 @@
-import "./App.css";
 import { useRef, useState } from "react";
 import Webcam from "react-webcam";
+import "./App.css";
 import axios from "axios";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { Effect } from "@cloudinary/url-gen/actions/effect";
 
-let cloudName = "< INSERT-CLOUDNAME-HERE >";
+let cloudName = "dqydioa16";
 const cld = new Cloudinary({
     cloud: {
         cloudName,
