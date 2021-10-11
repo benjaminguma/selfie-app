@@ -92,7 +92,7 @@ const App = () => {
             setLoading(true);
             const imageData = new FormData();
             imageData.append("file", data);
-            imageData.append("upload_preset", "testpreset");
+            imageData.append("upload_preset", <INSERT-UNSIGNED-UPLOAD-PRESET-HERE>>);
             const res = await axios.post(
                 ` https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
                 imageData
