@@ -8,7 +8,7 @@ import { Effect } from '@cloudinary/url-gen/actions/effect';
 let cloudName = '<INSERT-CLOUDNAME-HERE>';
 const cld = new Cloudinary({
 	cloud: {
-		cloudName,
+		cloudNames,
 	},
 });
 
